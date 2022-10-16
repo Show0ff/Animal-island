@@ -1,6 +1,7 @@
 package com.javarush.khlopin.field;
 
 import com.javarush.khlopin.animals.Animal;
+import com.javarush.khlopin.animals.Unit;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,11 +9,11 @@ import java.util.Set;
 
 public class Cell {
 
-    int row;
+    private int row;
+     private int col;
 
-    int col;
+    private Map<String, Set<? extends Unit>> sets = new HashMap<>();
 
-    private Map<String, Set<? extends Animal>> sets = new HashMap<>();
 
     public Cell(int row, int col) {
         this.row = row;
@@ -39,5 +40,11 @@ public class Cell {
 
     }
 
+    public int getRow() {
+        return row;
+    }
 
+    public int getCol() {
+        return col;
+    }
 }
