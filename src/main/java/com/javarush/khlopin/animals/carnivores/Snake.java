@@ -31,4 +31,14 @@ public class Snake extends Carnivores {
         this.probabilities = new Probabilities(this.getClass(), Snake.class, 0);
         this.probabilities = new Probabilities(this.getClass(), Wolf.class, 0);
     }
+
+    @Override
+    public Properties getProperties() {
+        return properties;
+    }
+
+    @Override
+    public Probabilities getProbabilities() {
+        return probabilities;
+    }
 }

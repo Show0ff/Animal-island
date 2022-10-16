@@ -9,7 +9,7 @@ import com.javarush.khlopin.animals.herbivorous.*;
 public class Eagle extends Carnivores {
 
     private Probabilities probabilities;
-    public Properties properties;
+    private Properties properties;
 
     public Eagle() {
         this.properties = new Properties(6,20,3,1, "\uD83E\uDD85");
@@ -35,5 +35,10 @@ public class Eagle extends Carnivores {
 
     public Probabilities getProbabilities() {
         return probabilities;
+    }
+
+    @Override
+    public Properties getProperties() {
+        return properties;
     }
 }

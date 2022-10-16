@@ -1,11 +1,11 @@
 package com.javarush.khlopin;
 
-import com.javarush.khlopin.view.View;
+import com.javarush.khlopin.field.GameField;
+
 
 public class Runner {
     public static void main(String[] args) {
 
-        View view = new View();
-        view.showMap();
+        GameField gameField = new GameField();
     }
 }
