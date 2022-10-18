@@ -1,7 +1,7 @@
 package com.javarush.khlopin.settings;
 
 
-import com.javarush.khlopin.animals.AnimalCounter;
+import com.javarush.khlopin.units.AnimalCounter;
 
 public class Preferences {
     private static final AnimalCounter animalCounter = new AnimalCounter();

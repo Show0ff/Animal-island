@@ -1,22 +1,24 @@
 package com.javarush.khlopin.field;
 
-import com.javarush.khlopin.animals.Animal;
-import com.javarush.khlopin.animals.AnimalCounter;
-import com.javarush.khlopin.animals.Herbivorous;
-import com.javarush.khlopin.animals.Unit;
+import com.javarush.khlopin.units.*;
+import com.javarush.khlopin.units.carnivores.Fox;
+import com.javarush.khlopin.units.carnivores.Snake;
+import com.javarush.khlopin.units.carnivores.Wolf;
 import com.javarush.khlopin.settings.Preferences;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class GameField {
     public Cell[][] field;
     private final AnimalCounter animalCounter = new AnimalCounter();
 
+    public List<Animal> animals = Arrays.asList(new Snake(), new Wolf(), new Fox());
+
+
     public GameField() {
+
     }
 
     // Заселить поле животными и растениями
@@ -27,13 +29,11 @@ public class GameField {
                 field[i][j] = new Cell(i,j);
 
 
-                ArrayList<? extends Animal> animals =
                 for (Animal animal : animals) {
                     int num = ThreadLocalRandom.current().nextInt(0, animal.getProperties().maxCount);
-                    Set<Unit> typeSet = new HashSet<>();
+                    Set<Unit> typeSet = new HashSet<>(); }
 
 
-                }
             }
         }
 

@@ -1,7 +1,6 @@
 package com.javarush.khlopin.field;
 
-import com.javarush.khlopin.animals.Animal;
-import com.javarush.khlopin.animals.Unit;
+import com.javarush.khlopin.units.Unit;
 
 import java.util.HashMap;
 import java.util.Map;
