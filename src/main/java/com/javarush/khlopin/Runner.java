@@ -12,7 +12,8 @@ public class Runner {
         System.out.println(animalCounter.getHerbivores());
         System.out.println(animalCounter.getCountOfCarnivores());
         System.out.println(animalCounter.getCountOfHerbivorous());
-
+        System.out.println(animalCounter.getPlants());
+        System.out.println(animalCounter.getCountOfPlants());
 
     }
 }

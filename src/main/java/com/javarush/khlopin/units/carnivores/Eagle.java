@@ -8,8 +8,8 @@ import com.javarush.khlopin.units.herbivorous.*;
 
 public class Eagle extends Carnivores {
 
+    private final Properties properties;
     private Probabilities probabilities;
-    private Properties properties;
 
     public Eagle() {
         this.properties = new Properties(6,20,3,1, "\uD83E\uDD85");

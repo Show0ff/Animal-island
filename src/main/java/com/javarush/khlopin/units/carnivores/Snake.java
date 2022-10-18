@@ -8,8 +8,8 @@ import com.javarush.khlopin.units.herbivorous.*;
 
 public class Snake extends Carnivores {
 
-    public Properties properties;
-    public Probabilities probabilities;
+    private final Properties properties;
+    private Probabilities probabilities;
 
     public Snake() {
         this.properties = new Properties(15, 30, 1, 3, "\uD83D\uDC0D");

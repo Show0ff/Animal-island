@@ -14,7 +14,7 @@ public class GameField {
     public Cell[][] field;
     private final AnimalCounter animalCounter = new AnimalCounter();
 
-    public List<Animal> animals = Arrays.asList(new Snake(), new Wolf(), new Fox());
+    public ArrayList<Class<?>> animals = animalCounter.getAllUnits();
 
 
     public GameField() {
@@ -29,8 +29,8 @@ public class GameField {
                 field[i][j] = new Cell(i,j);
 
 
-                for (Animal animal : animals) {
-                    int num = ThreadLocalRandom.current().nextInt(0, animal.getProperties().maxCount);
+                for (Class<?> animal : animals) {
+                    int num = ThreadLocalRandom.current().nextInt(0, animal.getDeclaredField("properties").getInt(10));
                     Set<Unit> typeSet = new HashSet<>(); }
 
 

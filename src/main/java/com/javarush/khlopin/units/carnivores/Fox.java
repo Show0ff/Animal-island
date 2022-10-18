@@ -8,8 +8,8 @@ import com.javarush.khlopin.units.herbivorous.*;
 
 public class Fox extends Carnivores {
 
-    public Probabilities probabilities;
-    public Properties properties;
+    private final Properties properties;
+    private Probabilities probabilities;
 
     public Fox() {
 

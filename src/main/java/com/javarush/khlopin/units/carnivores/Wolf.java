@@ -7,10 +7,8 @@ import com.javarush.khlopin.settings.Properties;
 import com.javarush.khlopin.units.herbivorous.*;
 
 public class Wolf extends Carnivores {
-  public Probabilities probabilities;
-
-
-  public Properties properties;
+  private final Properties properties;
+  private Probabilities probabilities;
 
   public Wolf() {
     this.properties = new Properties(50,30,3,8, "\uD83D\uDC3A");

@@ -7,8 +7,8 @@ import com.javarush.khlopin.settings.Properties;
 import com.javarush.khlopin.units.herbivorous.*;
 
 public class Bear extends Carnivores {
-    public Properties properties;
-    public Probabilities probabilities;
+    private final Properties properties;
+    private Probabilities probabilities;
 
     public Bear() {
         this.properties = new Properties(500,5,2,80, "\uD83D\uDC3B");
