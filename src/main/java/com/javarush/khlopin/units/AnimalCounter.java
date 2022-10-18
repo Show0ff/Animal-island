@@ -18,9 +18,10 @@ public class AnimalCounter {
     public final ArrayList<Class<?>> carnivores = new ArrayList<>();
     public final ArrayList<Class<?>> plants = new ArrayList<>();
 
-    public final ArrayList<Class<?>> units = new ArrayList<>();
+
 
     public ArrayList<Class<?>> getAllUnits() {
+        ArrayList<Class<?>> units = new ArrayList<>();
         units.addAll(herbivorous);
         units.addAll(plants);
         units.addAll(carnivores);

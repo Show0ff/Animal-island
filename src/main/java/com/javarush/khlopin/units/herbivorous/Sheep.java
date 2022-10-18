@@ -8,11 +8,12 @@ import com.javarush.khlopin.units.plant.Plant;
 
 public class Sheep extends Herbivorous {
 
-    private final Properties properties;
+    private Properties properties;
     private Probabilities probabilities;
 
     public Sheep() {
-        this.properties = new Properties(70,140,3,15,"\uD83D\uDC11");
+
+        properties = new Properties(70,140,3,15,"\uD83D\uDC11");
 
         this.probabilities = new Probabilities(this.getClass(), Plant.class, 100);
         this.probabilities = new Probabilities(this.getClass(), Caterpillar.class, 0);

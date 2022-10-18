@@ -1,19 +1,16 @@
 package com.javarush.khlopin;
 
+import com.javarush.khlopin.field.GameField;
 import com.javarush.khlopin.units.AnimalCounter;
+
+import java.lang.reflect.InvocationTargetException;
 
 
 public class Runner {
     public static void main(String[] args) throws ClassNotFoundException {
 
         AnimalCounter animalCounter = new AnimalCounter();
-        System.out.println(animalCounter.getCarnivores());
-        System.out.println("-------------------------");
-        System.out.println(animalCounter.getHerbivores());
-        System.out.println(animalCounter.getCountOfCarnivores());
-        System.out.println(animalCounter.getCountOfHerbivorous());
-        System.out.println(animalCounter.getPlants());
-        System.out.println(animalCounter.getCountOfPlants());
+        animalCounter.getAllUnits();
 
     }
 }
