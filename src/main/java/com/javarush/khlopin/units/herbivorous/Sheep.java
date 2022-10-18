@@ -8,7 +8,7 @@ import com.javarush.khlopin.units.plant.Plant;
 
 public class Sheep extends Herbivorous {
 
-    private Properties properties;
+    private final Properties properties;
     private Probabilities probabilities;
 
     public Sheep() {

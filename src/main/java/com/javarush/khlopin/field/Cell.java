@@ -1,17 +1,17 @@
 package com.javarush.khlopin.field;
 
-import com.javarush.khlopin.units.Unit;
+import com.javarush.khlopin.units.Animal;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class Cell {
 
     private int row;
      private int col;
 
-    private Map<String, Set<? extends Unit>> sets = new HashMap<>();
+    public Map<Animal, List<Animal>> sets = new HashMap<>();
 
 
     public Cell(int row, int col) {
