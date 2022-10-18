@@ -8,7 +8,7 @@ import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class GameField {
-    public Cell[][] field = new Cell[Preferences.X][Preferences.Y];
+    public Cell[][] field = new Cell[Preferences.Y][Preferences.X];
     public final List<Animal> animals = Arrays.asList(new Wolf(), new Snake(), new Fox(), new Eagle(), new Bear(), new Buffalo(), new Caterpillar(),
             new Deer(), new Duck(), new Goat(), new Horse(), new Mouse(), new Rabbit(), new Sheep(), new WildBoar());
 
@@ -36,7 +36,6 @@ public class GameField {
                     Cell cell = new Cell(i,j);
                     cell.sets.put(animal,animalList);
                     field[i][j] = cell;
-                    System.out.println(cell.sets);
                 }
             }
         }
@@ -52,4 +51,11 @@ public class GameField {
 
     }
 
+    public int getCols() {
+        return field[0].length;
+    }
+
+    public int getRows() {
+        return field.length;
+    }
 }
