@@ -12,31 +12,32 @@ public class Horse extends Herbivorous {
     private Probabilities probabilities;
 
     public Horse() {
-        this.properties = new Properties(400,20,4,60,"\uD83D\uDC0E");
+        this.properties = new Properties(400,20,4,60,"\uD83D\uDC0E",10);
 
-        this.probabilities = new Probabilities(this.getClass(), Plant.class, 100);
-        this.probabilities = new Probabilities(this.getClass(), Caterpillar.class, 0);
-        this.probabilities = new Probabilities(this.getClass(), Duck.class, 0);
-        this.probabilities = new Probabilities(this.getClass(), Buffalo.class, 0);
-        this.probabilities = new Probabilities(this.getClass(), WildBoar.class, 0);
-        this.probabilities = new Probabilities(this.getClass(), Sheep.class,0);
-        this.probabilities = new Probabilities(this.getClass(), Goat.class,0);
-        this.probabilities = new Probabilities(this.getClass(), Mouse.class,0);
-        this.probabilities = new Probabilities(this.getClass(), Rabbit.class,0);
-        this.probabilities = new Probabilities(this.getClass(), Deer.class,0);
-        this.probabilities = new Probabilities(this.getClass(), Horse.class, 0);
-        this.probabilities = new Probabilities(this.getClass(), Eagle.class,0);
-        this.probabilities = new Probabilities(this.getClass(), Bear.class,0);
-        this.probabilities = new Probabilities(this.getClass(), Fox.class,0);
-        this.probabilities = new Probabilities(this.getClass(), Snake.class,0);
-        this.probabilities = new Probabilities(this.getClass(), Wolf.class,0);
+//        this.probabilities = new Probabilities(this.getClass(), Plant.class, 100);
+//        this.probabilities = new Probabilities(this.getClass(), Caterpillar.class, 0);
+//        this.probabilities = new Probabilities(this.getClass(), Duck.class, 0);
+//        this.probabilities = new Probabilities(this.getClass(), Buffalo.class, 0);
+//        this.probabilities = new Probabilities(this.getClass(), WildBoar.class, 0);
+//        this.probabilities = new Probabilities(this.getClass(), Sheep.class,0);
+//        this.probabilities = new Probabilities(this.getClass(), Goat.class,0);
+//        this.probabilities = new Probabilities(this.getClass(), Mouse.class,0);
+//        this.probabilities = new Probabilities(this.getClass(), Rabbit.class,0);
+//        this.probabilities = new Probabilities(this.getClass(), Deer.class,0);
+//        this.probabilities = new Probabilities(this.getClass(), Horse.class, 0);
+//        this.probabilities = new Probabilities(this.getClass(), Eagle.class,0);
+//        this.probabilities = new Probabilities(this.getClass(), Bear.class,0);
+//        this.probabilities = new Probabilities(this.getClass(), Fox.class,0);
+//        this.probabilities = new Probabilities(this.getClass(), Snake.class,0);
+//        this.probabilities = new Probabilities(this.getClass(), Wolf.class,0);
     }
     @Override
     public Properties getProperties() {
         return properties;
     }
+
     @Override
-    public Probabilities getProbabilities() {
-        return probabilities;
+    public int getId() {
+        return getProperties().id;
     }
 }

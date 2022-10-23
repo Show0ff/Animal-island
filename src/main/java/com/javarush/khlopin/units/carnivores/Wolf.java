@@ -8,35 +8,19 @@ import com.javarush.khlopin.units.herbivorous.*;
 
 public class Wolf extends Carnivores {
   private final Properties properties;
-  private Probabilities probabilities;
 
   public Wolf() {
-    this.properties = new Properties(50,30,3,8, "\uD83D\uDC3A");
-    this.probabilities = new Probabilities(this.getClass(), Plant.class, 0);
-    this.probabilities = new Probabilities(this.getClass(), Caterpillar.class, 0);
-    this.probabilities = new Probabilities(this.getClass(), Duck.class, 40);
-    this.probabilities = new Probabilities(this.getClass(), Buffalo.class, 10);
-    this.probabilities = new Probabilities(this.getClass(), WildBoar.class, 15);
-    this.probabilities = new Probabilities(this.getClass(), Sheep.class,70);
-    this.probabilities = new Probabilities(this.getClass(), Goat.class,60);
-    this.probabilities = new Probabilities(this.getClass(), Mouse.class,80);
-    this.probabilities = new Probabilities(this.getClass(), Rabbit.class,60);
-    this.probabilities = new Probabilities(this.getClass(), Deer.class,15);
-    this.probabilities = new Probabilities(this.getClass(), Horse.class, 10);
-    this.probabilities = new Probabilities(this.getClass(), Eagle.class,0);
-    this.probabilities = new Probabilities(this.getClass(), Bear.class,0);
-    this.probabilities = new Probabilities(this.getClass(), Fox.class,0);
-    this.probabilities = new Probabilities(this.getClass(), Snake.class,0);
-    this.probabilities = new Probabilities(this.getClass(), Wolf.class,0);
+    this.properties = new Properties(50,30,3,8, "\uD83D\uDC3A",4);
   }
 
-  @Override
-  public Probabilities getProbabilities() {
-    return probabilities;
-  }
 
   @Override
   public Properties getProperties() {
     return properties;
+  }
+
+  @Override
+  public int getId() {
+    return getProperties().id;
   }
 }

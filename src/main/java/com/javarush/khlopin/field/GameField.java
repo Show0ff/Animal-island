@@ -1,40 +1,35 @@
 package com.javarush.khlopin.field;
 
+import com.javarush.khlopin.exception.IslandApplicationException;
 import com.javarush.khlopin.settings.Preferences;
+import com.javarush.khlopin.settings.Properties;
 import com.javarush.khlopin.units.*;
-import com.javarush.khlopin.units.carnivores.*;
-import com.javarush.khlopin.units.herbivorous.*;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class GameField {
-    public Cell[][] field = new Cell[Preferences.Y][Preferences.X];
-    public final List<Animal> animals = Arrays.asList(new Wolf(), new Snake(), new Fox(), new Eagle(), new Bear(), new Buffalo(), new Caterpillar(),
-            new Deer(), new Duck(), new Goat(), new Horse(), new Mouse(), new Rabbit(), new Sheep(), new WildBoar());
-
-
+    public static Cell[][] field = new Cell[Preferences.Y][Preferences.X];
+    public UnitDistributor unitDistributor = new UnitDistributor();
 
     public GameField() {
 
     }
 
     // Заселить поле животными и растениями
-    public void initialize()  {
+    public void initialize() {
         for (int i = 0; i < field.length; i++) {
-            for (int j = 0; j < field[0].length; j++)
-
-            {
-                for (Animal animal : animals) {
-                    int num = ThreadLocalRandom.current().nextInt(0, animal.getProperties().maxCount);
-
-                    List<Animal> animalList = new ArrayList<>();
-
+            for (int j = 0; j < field[0].length; j++) {
+                Cell cell = new Cell(i, j);
+                for (Unit unit : unitDistributor.getUnits()) {
+                    int num = ThreadLocalRandom.current().nextInt(0, unit.getProperties().maxCount);
+                    List<Unit> unitSet = new ArrayList<>();
                     for (int i1 = 0; i1 < num; i1++) {
-                        animalList.add(animal);
+                        unitSet.add(unit);
                     }
-
-                    Cell cell = new Cell(i,j);
-                    cell.sets.put(animal,animalList);
+                    cell.sets.put(unit.getClass().getSimpleName(), unitSet);
                     field[i][j] = cell;
                 }
             }
@@ -43,19 +38,41 @@ public class GameField {
 
     // Сделать шаг (пробижаться по всем ячейкам)
     public void makeStep() {
-
+        for (int i = 0; i < field.length; i++) {
+            for (int j = 0; j < field[i].length; j++) {
+                field[i][j].makeStep();
+            }
+        }
     }
 
     // Вывести статистику
-    public void printState() {
+    public void printState() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        Map<String, Integer> countMap = new HashMap<>();
 
+
+        for (Cell[] cells : field) {
+            for (Cell cell : cells) {
+                Map<String, Integer> currentMap = new HashMap<>();
+                for (Map.Entry<String, List<Unit>> stringListEntry : cell.sets.entrySet()) { // проходит по значению в одной клетке
+                    if (stringListEntry.getValue().size() == 0) {
+                        continue;
+                    }
+                    Method getProperties = stringListEntry.getValue().get(0).getClass().getMethod("getProperties");
+                        Properties invoke = (Properties) getProperties.invoke(stringListEntry.getValue().get(0));
+                        currentMap.put(invoke.icon, stringListEntry.getValue().size() + currentMap.getOrDefault(stringListEntry.getKey(), 0));
+                }
+                currentMap.forEach((k, v) -> countMap.merge(k, v, Integer::sum));
+            }
+        }
+        System.out.println(countMap);
     }
 
-    public int getCols() {
-        return field[0].length;
-    }
+        public int getCols () {
+            return field[0].length;
+        }
 
-    public int getRows() {
-        return field.length;
-    }
+        public int getRows () {
+            return field.length;
+        }
+
 }

@@ -8,11 +8,14 @@ public class Properties {
     public double foodForSaturation;
     public String icon;
 
-    public Properties(double weight, int maxCount, int speed, double foodForSaturation, String icon) {
+    public int id;
+
+    public Properties(double weight, int maxCount, int speed, double foodForSaturation, String icon, int id) {
         this.maxWeight = weight;
         this.maxCount = maxCount;
         this.maxSpeed = speed;
         this.foodForSaturation = foodForSaturation;
         this.icon = icon;
+        this.id = id;
     }
 }

@@ -1,34 +1,23 @@
 package com.javarush.khlopin.units.carnivores;
 
+import com.javarush.khlopin.units.Unit;
 import com.javarush.khlopin.units.plant.Plant;
 import com.javarush.khlopin.units.Carnivores;
 import com.javarush.khlopin.settings.Probabilities;
 import com.javarush.khlopin.settings.Properties;
 import com.javarush.khlopin.units.herbivorous.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Bear extends Carnivores {
     private final Properties properties;
-    private Probabilities probabilities;
+
 
     public Bear() {
-        this.properties = new Properties(500,5,2,80, "\uD83D\uDC3B");
+        this.properties = new Properties(500,5,2,80, "\uD83D\uDC3B", 0);
 
-        this.probabilities = new Probabilities(this.getClass(), Plant.class, 0);
-        this.probabilities = new Probabilities(this.getClass(), Caterpillar.class, 0);
-        this.probabilities = new Probabilities(this.getClass(), Duck.class, 10);
-        this.probabilities = new Probabilities(this.getClass(), Buffalo.class, 20);
-        this.probabilities = new Probabilities(this.getClass(), WildBoar.class, 50);
-        this.probabilities = new Probabilities(this.getClass(), Sheep.class,70);
-        this.probabilities = new Probabilities(this.getClass(), Goat.class,70);
-        this.probabilities = new Probabilities(this.getClass(), Mouse.class,90);
-        this.probabilities = new Probabilities(this.getClass(), Rabbit.class,80);
-        this.probabilities = new Probabilities(this.getClass(), Deer.class,80);
-        this.probabilities = new Probabilities(this.getClass(), Horse.class, 40);
-        this.probabilities = new Probabilities(this.getClass(), Eagle.class,0);
-        this.probabilities = new Probabilities(this.getClass(), Bear.class,0);
-        this.probabilities = new Probabilities(this.getClass(), Fox.class,0);
-        this.probabilities = new Probabilities(this.getClass(), Snake.class,80);
-        this.probabilities = new Probabilities(this.getClass(), Wolf.class,0);
+
     }
 
     @Override
@@ -37,7 +26,7 @@ public class Bear extends Carnivores {
     }
 
     @Override
-    public Probabilities getProbabilities() {
-        return probabilities;
+    public int getId() {
+        return getProperties().id;
     }
 }
