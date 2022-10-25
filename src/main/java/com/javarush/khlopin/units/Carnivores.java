@@ -1,7 +1,5 @@
 package com.javarush.khlopin.units;
 
-import com.javarush.khlopin.settings.Probabilities;
-
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;

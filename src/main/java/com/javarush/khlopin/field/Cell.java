@@ -2,11 +2,12 @@ package com.javarush.khlopin.field;
 
 import com.javarush.khlopin.settings.Preferences;
 import com.javarush.khlopin.units.*;
+import com.javarush.khlopin.units.herbivorous.Caterpillar;
 import com.javarush.khlopin.units.plant.Plant;
 
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.stream.Collectors;
+
 
 public class Cell {
 
@@ -53,16 +54,11 @@ public class Cell {
         for (Map.Entry<String, List<Unit>> pair : sets.entrySet()) {
             List<Unit> value = pair.getValue();
             for (Unit unit : value) {
-                if (unit instanceof Plant) {
+                if (unit instanceof Plant || unit instanceof Caterpillar) {
                     continue;
                 }
-                boolean isExit = false;
                 for (Cell[] cells : GameField.field) {
-                    if (isExit) {
-                        break;
-                    }
                     for (Cell cell : cells) {
-
                         // В этих переменных получаем координаты коллекции sets поля field
                         int newRow = cell.getCol() + ThreadLocalRandom.current().nextInt(0, unit.getProperties().maxSpeed);
                         int newCol = cell.getRow() + ThreadLocalRandom.current().nextInt(0, unit.getProperties().maxSpeed);
@@ -78,8 +74,7 @@ public class Cell {
                         if (isMove) {
                             Map<String, List<Unit>> setsOld = GameField.field[cell.getRow()][cell.getCol()].sets;
                             Map<String, List<Unit>> setsNew = GameField.field[newRow][newCol].sets;
-
-                            setsNew.forEach(setsOld::putIfAbsent);
+                            setsOld.forEach(setsNew::putIfAbsent);
 
                         }
                     }

@@ -1,17 +1,7 @@
 package com.javarush.khlopin.units.carnivores;
 
-import com.javarush.khlopin.field.Cell;
-import com.javarush.khlopin.settings.Preferences;
-import com.javarush.khlopin.units.Unit;
-import com.javarush.khlopin.units.plant.Plant;
 import com.javarush.khlopin.units.Carnivores;
-import com.javarush.khlopin.settings.Probabilities;
 import com.javarush.khlopin.settings.Properties;
-import com.javarush.khlopin.units.herbivorous.*;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class Bear extends Carnivores {
     private final Properties properties;

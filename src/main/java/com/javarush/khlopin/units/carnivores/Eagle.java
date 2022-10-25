@@ -1,10 +1,8 @@
 package com.javarush.khlopin.units.carnivores;
 
-import com.javarush.khlopin.units.plant.Plant;
 import com.javarush.khlopin.units.Carnivores;
-import com.javarush.khlopin.settings.Probabilities;
 import com.javarush.khlopin.settings.Properties;
-import com.javarush.khlopin.units.herbivorous.*;
+
 
 public class Eagle extends Carnivores {
 

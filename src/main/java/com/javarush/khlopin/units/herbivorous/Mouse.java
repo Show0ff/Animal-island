@@ -1,6 +1,5 @@
 package com.javarush.khlopin.units.herbivorous;
 
-import com.javarush.khlopin.settings.Probabilities;
 import com.javarush.khlopin.units.Herbivorous;
 import com.javarush.khlopin.settings.Properties;
 import com.javarush.khlopin.units.Unit;
@@ -12,7 +11,7 @@ public class Mouse extends Herbivorous {
 
 
     private final Properties properties;
-    private Probabilities probabilities;
+
 
     public Mouse() {
         this.properties = new Properties(0.05,500,1,0.001, "\uD83D\uDC01",11);

@@ -18,11 +18,13 @@ public class Runner {
 
         gameField = new GameField();
         View view = new View();
-
-
         gameField.initialize();
-        gameField.printState();
-        gameField.makeStep();
+        for (int i = 0; i < 10; i++) {
+
+            gameField.printState();
+            gameField.makeStep();
+        }
+
         gameField.printState();
 
 
