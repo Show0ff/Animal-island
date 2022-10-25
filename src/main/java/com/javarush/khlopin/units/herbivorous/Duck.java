@@ -17,12 +17,8 @@ public class Duck extends Herbivorous {
 
     }
 
-    @Override
-    public void eat(List<Unit> plants) {
-        super.eat(plants);
-    }
 
-//    public void eat(Caterpillar caterpillar) {
+    //    public void eat(Caterpillar caterpillar) {
 //    } //TODO УТКА ДОЛЖНА ЕСТЬ ГУСЕНИЦУ
 
 

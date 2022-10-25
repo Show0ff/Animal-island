@@ -26,8 +26,4 @@ public class Deer extends Herbivorous {
         return getProperties().id;
     }
 
-    @Override
-    public void eat(List<Unit> plants) {
-        super.eat(plants);
-    }
 }

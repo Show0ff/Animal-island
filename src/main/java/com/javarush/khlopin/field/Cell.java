@@ -12,7 +12,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Cell {
 
     private final int row;
-     private final int col;
+    private final int col;
 
     public Map<String, List<Unit>> sets = new HashMap<>();
     private final UnitDistributor unitDistributor = new UnitDistributor();
@@ -26,31 +26,50 @@ public class Cell {
     public void makeStep() {
         eat();
 
+        checkForSatiety();
+
         move();
 
         multiply();
     }
 
     private void eat() {
+
         for (Map.Entry<String, List<Unit>> pair : sets.entrySet()) {
             List<Unit> value = pair.getValue();
             for (Unit unit : value) {
                 if (unit instanceof Carnivores) {
                     List<Unit> herbivores = unitDistributor.getHerbivores();
                     for (Unit herbivore : herbivores) {
-                        ((Carnivores) unit).eat(sets.get(herbivore.getClass().getSimpleName()),unit);
+                        ((Carnivores) unit).eat(sets.get(herbivore.getClass().getSimpleName()), unit);
                     }
+
                 } else if (unit instanceof Herbivorous) {
                     List<Unit> plants = unitDistributor.getPlants();
-                    if (plants != null) {
-                        ((Herbivorous) unit).eat(plants);
+                    for (Unit plant : plants) {
+                        ((Herbivorous) unit).eat(sets.get(plant.getClass().getSimpleName()), unit);
                     }
                 }
             }
         }
     }
 
+    private void checkForSatiety() {
+        for (Map.Entry<String, List<Unit>> pair : sets.entrySet()) {
+            List<Unit> value = pair.getValue();
+            Iterator<Unit> iterator = value.iterator();
+            while (iterator.hasNext()) {
+                if (iterator instanceof Plant) {
+                    continue;
+                }
+                if (iterator.next().getProperties().foodForSaturation < 0)
+                    iterator.remove();
+            }
+        }
+    }
+
     private void move() {
+        boolean isMove = true;
         for (Map.Entry<String, List<Unit>> pair : sets.entrySet()) {
             List<Unit> value = pair.getValue();
             for (Unit unit : value) {
@@ -59,11 +78,11 @@ public class Cell {
                 }
                 for (Cell[] cells : GameField.field) {
                     for (Cell cell : cells) {
+
                         // В этих переменных получаем координаты коллекции sets поля field
                         int newRow = cell.getCol() + ThreadLocalRandom.current().nextInt(0, unit.getProperties().maxSpeed);
                         int newCol = cell.getRow() + ThreadLocalRandom.current().nextInt(0, unit.getProperties().maxSpeed);
 
-                        boolean isMove = true;
 
                         if (newRow >= Preferences.Y || newCol >= Preferences.X || newCol < 0 || newRow < 0) {
                             isMove = false;

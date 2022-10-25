@@ -12,7 +12,7 @@ import java.util.Arrays;
 public class Runner {
     private static GameField gameField;
 
-    public static void main(String[] args) throws InvocationTargetException, NoSuchMethodException, IllegalAccessException, InstantiationException {
+    public static void main(String[] args) throws InvocationTargetException, NoSuchMethodException, IllegalAccessException, InstantiationException, ClassNotFoundException {
         //TODO РЕАЛИЗОВАТЬ МНОГОПОТОЧКУ
         //TODO ОТРЕФАКТОРИТЬ КОД
 

@@ -7,14 +7,18 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Herbivorous extends Animal{
-    public void eat(List<Unit> plants) {
+    public void eat(List<Unit> plants, Unit superUnit) {
         int randomInt;
         Iterator<Unit> iterator = plants.iterator();
         while (iterator.hasNext()) {
-            iterator.next();
+            Unit unit = iterator.next();
             randomInt = ThreadLocalRandom.current().nextInt(Preferences.CHANCE_TO_EAT_PLANT); //Вероятность поедания травы
             if (randomInt == 1) {
-            iterator.remove();}
+                superUnit.getProperties().foodForSaturation += 2;
+            iterator.remove();
+            } else {
+                superUnit.getProperties().foodForSaturation -= 2;
+            }
         }
     }
 }

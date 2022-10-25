@@ -17,10 +17,7 @@ public class Caterpillar extends Herbivorous {
 
     }
 
-    @Override
-    public void eat(List<Unit> plants) {
-        super.eat(plants);
-    }
+
 
     @Override
     public Properties getProperties() {

@@ -15,7 +15,10 @@ public abstract class Carnivores extends Animal {
             randomInt = ThreadLocalRandom.current().nextInt(100);
             int currentProbability = matrixOfPower[superUnit.getId()][unit.getId()];
             if (randomInt < currentProbability) {
+                superUnit.getProperties().foodForSaturation += 2;
                 iterator.remove();
+            } else {
+                superUnit.getProperties().foodForSaturation -= 2;
             }
         }
     }

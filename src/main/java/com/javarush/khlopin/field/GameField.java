@@ -18,7 +18,7 @@ public class GameField {
     }
 
     // Заселить поле животными и растениями
-    public void initialize() {
+    public void initialize() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         for (int i = 0; i < field.length; i++) {
             for (int j = 0; j < field[0].length; j++) {
                 Cell cell = new Cell(i, j);
@@ -26,7 +26,7 @@ public class GameField {
                     int num = ThreadLocalRandom.current().nextInt(0, unit.getProperties().maxCount);
                     List<Unit> unitSet = new ArrayList<>();
                     for (int i1 = 0; i1 < num; i1++) {
-                        unitSet.add(unit);
+                        unitSet.add(UnitFactory.bornUnitByName(unit.getClass().getSimpleName()));
                     }
                     cell.sets.put(unit.getClass().getSimpleName(), unitSet);
                     field[i][j] = cell;
