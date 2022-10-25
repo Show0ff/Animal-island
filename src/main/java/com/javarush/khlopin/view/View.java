@@ -9,32 +9,31 @@ import java.util.Map;
 import java.util.StringJoiner;
 
 public class View {
-    private final int position = 3;
+    private final int position = 2;
     private final String border = "═".repeat(position);
 
-    public String showMap(GameField gameField) {
-        Cell[][] cells = gameField.field;
-        final int cols = gameField.getCols();
-        final int rows = gameField.getRows();
-        StringBuilder stringBuilder = new StringBuilder();
+    public void showMap() {
+        Cell[][] cells = GameField.field;
+        final int cols = GameField.getCols();
+        final int rows = GameField.getRows();
+        StringBuilder stringBuilder = new StringBuilder("\n");
         for (int i = 0; i < rows; i++) {
             stringBuilder.append(i == 0
-                    ? line(cols,'┏','┳','┓')
-                    : line(cols, '┣','╋', '┨')
+                    ? line(cols,'╔', '╦', '╗')
+                    : line(cols, '╠', '╬', '╣')
             ).append("\n");
             for (int i1 = 0; i1 < cols; i1++) {
                 String residentString = get(cells[i][i1]);
                 stringBuilder.append(String.format("║%-" + position + "s", residentString));
             }
+            stringBuilder.append("                              ║").append("\n");
         }
-        stringBuilder.append(line(cols,'┗','┻','┚')).append("\n");
+        stringBuilder.append(line(cols,'╚', '╩', '╝'));
         System.out.println(stringBuilder);
-        return stringBuilder.toString();
     }
 
     private String get(Cell cell) {
         String icon = null;
-        System.out.println(cell);
         for (Map.Entry<String, List<Unit>> animalListEntry : cell.sets.entrySet()) {
             for (Unit unit : animalListEntry.getValue()) {
                 icon = unit.getProperties().icon;

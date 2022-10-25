@@ -1,10 +1,9 @@
 package com.javarush.khlopin.units.herbivorous;
 
-import com.javarush.khlopin.units.Unit;
+
 import com.javarush.khlopin.units.Herbivorous;
 import com.javarush.khlopin.settings.Properties;
 
-import java.util.List;
 
 public class Caterpillar extends Herbivorous {
 
@@ -13,7 +12,7 @@ public class Caterpillar extends Herbivorous {
 
     public Caterpillar() {
 
-        this.properties = new Properties(0.01,1000,0,0,"\uD83D\uDC1B",6);
+        this.properties = new Properties(0.01,100,0,0,"\uD83D\uDC1B",6);
 
     }
 

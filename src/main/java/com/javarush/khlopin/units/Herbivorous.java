@@ -11,13 +11,13 @@ public abstract class Herbivorous extends Animal{
         int randomInt;
         Iterator<Unit> iterator = plants.iterator();
         while (iterator.hasNext()) {
-            Unit unit = iterator.next();
+            iterator.next();
             randomInt = ThreadLocalRandom.current().nextInt(Preferences.CHANCE_TO_EAT_PLANT); //Вероятность поедания травы
             if (randomInt == 1) {
-                superUnit.getProperties().foodForSaturation += 2;
+                superUnit.getProperties().satiety += 10;
             iterator.remove();
             } else {
-                superUnit.getProperties().foodForSaturation -= 2;
+                superUnit.getProperties().satiety += 1;
             }
         }
     }

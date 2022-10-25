@@ -1,5 +1,7 @@
 package com.javarush.khlopin.units;
 
+import com.javarush.khlopin.settings.Preferences;
+
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -13,12 +15,12 @@ public abstract class Carnivores extends Animal {
         while (iterator.hasNext()) {
             Unit unit = iterator.next();
             randomInt = ThreadLocalRandom.current().nextInt(100);
-            int currentProbability = matrixOfPower[superUnit.getId()][unit.getId()];
+            int currentProbability = Preferences.matrixOfPower[superUnit.getId()][unit.getId()];
             if (randomInt < currentProbability) {
-                superUnit.getProperties().foodForSaturation += 2;
+                superUnit.getProperties().foodForSaturation += 10;
                 iterator.remove();
             } else {
-                superUnit.getProperties().foodForSaturation -= 2;
+                superUnit.getProperties().foodForSaturation -= 1;
             }
         }
     }

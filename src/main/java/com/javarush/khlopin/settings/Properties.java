@@ -8,7 +8,7 @@ public class Properties {
     public double foodForSaturation;
     public String icon;
 
-    public int satiety;
+    public double satiety;
 
     public int id;
 
@@ -19,6 +19,6 @@ public class Properties {
         this.foodForSaturation = foodForSaturation;
         this.icon = icon;
         this.id = id;
-        this.satiety = 100;
+        this.satiety = foodForSaturation;
     }
 }

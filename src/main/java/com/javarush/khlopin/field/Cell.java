@@ -55,15 +55,17 @@ public class Cell {
     }
 
     private void checkForSatiety() {
-        for (Map.Entry<String, List<Unit>> pair : sets.entrySet()) {
-            List<Unit> value = pair.getValue();
-            Iterator<Unit> iterator = value.iterator();
-            while (iterator.hasNext()) {
-                if (iterator instanceof Plant) {
-                    continue;
-                }
-                if (iterator.next().getProperties().foodForSaturation < 0)
-                    iterator.remove();
+                for (Map.Entry<String, List<Unit>> pair : sets.entrySet()) {
+                    List<Unit> value = pair.getValue();
+                    Iterator<Unit> iterator = value.iterator();
+                    while (iterator.hasNext()) {
+                        if (iterator instanceof Plant) {
+                            continue;
+                        }
+                        double foodForSaturationCurrent = iterator.next().getProperties().foodForSaturation;
+                        if (foodForSaturationCurrent < 0) {
+                            iterator.remove();
+                        }
             }
         }
     }

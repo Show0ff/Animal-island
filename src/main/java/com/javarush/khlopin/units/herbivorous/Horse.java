@@ -3,9 +3,7 @@ package com.javarush.khlopin.units.herbivorous;
 
 import com.javarush.khlopin.units.Herbivorous;
 import com.javarush.khlopin.settings.Properties;
-import com.javarush.khlopin.units.Unit;
 
-import java.util.List;
 
 
 public class Horse extends Herbivorous {

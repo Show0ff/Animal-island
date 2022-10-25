@@ -25,7 +25,7 @@ public class UnitFactory {
             case "Rabbit" -> new Rabbit();
             case "Sheep" -> new Sheep();
             case "WildBoar" -> new WildBoar();
-            default -> throw new IslandApplicationException("Name of Unit is incorrect");
+            default -> throw new IslandApplicationException();
         };
 
     }

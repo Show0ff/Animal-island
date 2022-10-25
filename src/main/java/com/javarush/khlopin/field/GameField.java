@@ -1,5 +1,6 @@
 package com.javarush.khlopin.field;
 
+import com.javarush.khlopin.exception.IslandApplicationException;
 import com.javarush.khlopin.settings.Preferences;
 import com.javarush.khlopin.settings.Properties;
 import com.javarush.khlopin.units.*;
@@ -13,12 +14,10 @@ public class GameField {
     public static Cell[][] field = new Cell[Preferences.Y][Preferences.X];
     public UnitDistributor unitDistributor = new UnitDistributor();
 
-    public GameField() {
 
-    }
 
     // Заселить поле животными и растениями
-    public void initialize() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    public void initialize()  {
         for (int i = 0; i < field.length; i++) {
             for (int j = 0; j < field[0].length; j++) {
                 Cell cell = new Cell(i, j);
@@ -36,16 +35,16 @@ public class GameField {
     }
 
     // Сделать шаг (пробижаться по всем ячейкам)
-    public void makeStep() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException, InstantiationException {
-        for (int i = 0; i < field.length; i++) {
-            for (int j = 0; j < field[i].length; j++) {
-                field[i][j].makeStep();
+    public void makeStep()  {
+        for (Cell[] cells : field) {
+            for (Cell cell : cells) {
+                cell.makeStep();
             }
         }
     }
 
     // Вывести статистику
-    public void printState() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    public void printState()  {
         Map<String, Integer> countMap = new HashMap<>();
         for (Cell[] cells : field) {
             for (Cell cell : cells) {
@@ -54,9 +53,19 @@ public class GameField {
                     if (stringListEntry.getValue().size() == 0) {
                         continue;
                     }
-                    Method getProperties = stringListEntry.getValue().get(0).getClass().getMethod("getProperties");
-                        Properties invoke = (Properties) getProperties.invoke(stringListEntry.getValue().get(0));
-                        currentMap.put(invoke.icon, stringListEntry.getValue().size() + currentMap.getOrDefault(stringListEntry.getKey(), 0));
+                    Method getProperties;
+                    try {
+                        getProperties = stringListEntry.getValue().get(0).getClass().getMethod("getProperties");
+                    } catch (NoSuchMethodException e) {
+                        throw new IslandApplicationException(e);
+                    }
+                    Properties invoke;
+                    try {
+                        invoke = (Properties) getProperties.invoke(stringListEntry.getValue().get(0));
+                    } catch (IllegalAccessException | InvocationTargetException e) {
+                        throw new IslandApplicationException(e);
+                    }
+                    currentMap.put(invoke.icon, stringListEntry.getValue().size() + currentMap.getOrDefault(stringListEntry.getKey(), 0));
                 }
                 currentMap.forEach((k, v) -> countMap.merge(k, v, Integer::sum));
             }
