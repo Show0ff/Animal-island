@@ -1,8 +1,6 @@
 package com.javarush.khlopin.settings;
 
 
-
-
 public class Preferences {
 
     public static final int X = 100;

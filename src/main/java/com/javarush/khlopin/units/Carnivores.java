@@ -10,11 +10,10 @@ public abstract class Carnivores extends Animal {
 
 
     public void eat(List<Unit> herbivoresList, Unit superUnit) {
-        int randomInt;
         Iterator<Unit> iterator = herbivoresList.iterator();
         while (iterator.hasNext()) {
             Unit unit = iterator.next();
-            randomInt = ThreadLocalRandom.current().nextInt(100);
+            int randomInt = ThreadLocalRandom.current().nextInt(100);
             int currentProbability = Preferences.matrixOfPower[superUnit.getId()][unit.getId()];
             if (randomInt < currentProbability) {
                 superUnit.getProperties().foodForSaturation += 10;

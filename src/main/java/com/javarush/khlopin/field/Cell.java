@@ -3,6 +3,7 @@ package com.javarush.khlopin.field;
 import com.javarush.khlopin.settings.Preferences;
 import com.javarush.khlopin.units.*;
 import com.javarush.khlopin.units.herbivorous.Caterpillar;
+import com.javarush.khlopin.units.herbivorous.Duck;
 import com.javarush.khlopin.units.plant.Plant;
 
 import java.util.*;
@@ -44,6 +45,10 @@ public class Cell {
                         ((Carnivores) unit).eat(sets.get(herbivore.getClass().getSimpleName()), unit);
                     }
 
+                } else if (unit instanceof Duck) {
+                    List<Unit> herbivores = unitDistributor.getHerbivores();
+                    for (Unit herbivore : herbivores) {
+                    ((Duck) unit).eat(sets.get(herbivore.getClass().getSimpleName()), unit); }
                 } else if (unit instanceof Herbivorous) {
                     List<Unit> plants = unitDistributor.getPlants();
                     for (Unit plant : plants) {
@@ -52,20 +57,21 @@ public class Cell {
                 }
             }
         }
+
     }
 
     private void checkForSatiety() {
-                for (Map.Entry<String, List<Unit>> pair : sets.entrySet()) {
-                    List<Unit> value = pair.getValue();
-                    Iterator<Unit> iterator = value.iterator();
-                    while (iterator.hasNext()) {
-                        if (iterator instanceof Plant) {
-                            continue;
-                        }
-                        double foodForSaturationCurrent = iterator.next().getProperties().foodForSaturation;
-                        if (foodForSaturationCurrent < 0) {
-                            iterator.remove();
-                        }
+        for (Map.Entry<String, List<Unit>> pair : sets.entrySet()) {
+            List<Unit> value = pair.getValue();
+            Iterator<Unit> iterator = value.iterator();
+            while (iterator.hasNext()) {
+                if (iterator instanceof Plant) {
+                    continue;
+                }
+                double foodForSaturationCurrent = iterator.next().getProperties().foodForSaturation;
+                if (foodForSaturationCurrent < 0) {
+                    iterator.remove();
+                }
             }
         }
     }

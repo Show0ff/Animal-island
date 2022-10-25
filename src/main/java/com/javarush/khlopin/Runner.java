@@ -16,14 +16,14 @@ public class Runner {
         View view = new View();
         gameField.initialize();
         for (int i = 0; i < 1000; i++) {
-            view.showMap();
-            gameField.printState();
+            view.printMap();
+
+            view.printStatistic();
 
             gameField.makeStep();
         }
 
-        gameField.printState();
-
+        view.printStatistic();
 
 
 
