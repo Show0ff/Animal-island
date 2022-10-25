@@ -1,6 +1,6 @@
 package com.javarush.khlopin.units;
 
-import com.javarush.khlopin.units.plant.Plant;
+import com.javarush.khlopin.settings.Preferences;
 
 import java.util.Iterator;
 import java.util.List;
@@ -11,10 +11,10 @@ public abstract class Herbivorous extends Animal{
         int randomInt;
         Iterator<Unit> iterator = plants.iterator();
         while (iterator.hasNext()) {
-            Unit unit = iterator.next();
-            randomInt = ThreadLocalRandom.current().nextInt(2);
-            if (randomInt == 1)
-            iterator.remove();
+            iterator.next();
+            randomInt = ThreadLocalRandom.current().nextInt(Preferences.CHANCE_TO_EAT_PLANT); //Вероятность поедания травы
+            if (randomInt == 1) {
+            iterator.remove();}
         }
     }
 }

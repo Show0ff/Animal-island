@@ -1,7 +1,7 @@
 package com.javarush.khlopin.units;
 
+
 import com.javarush.khlopin.field.Cell;
-import com.javarush.khlopin.settings.Preferences;
 import com.javarush.khlopin.settings.Properties;
 
 import java.util.concurrent.ThreadLocalRandom;
@@ -31,30 +31,16 @@ public abstract class Unit {
      */
 
     public static int[][] matrixOfPower = new int[16][16];
-    private boolean isMove = true;
 
-    public boolean move(Cell cell) {
-        int newRow = cell.getRow() + ThreadLocalRandom.current().nextInt(1, getProperties().maxSpeed);
-        int newCol = cell.getCol() + ThreadLocalRandom.current().nextInt(1, getProperties().maxSpeed);
 
-        if (newRow >= Preferences.Y || newCol >= Preferences.X || newCol < 0 || newRow < 0 ) {
-            isMove = false;
-        }
-
-        if (newRow >= cell.getRow() && newCol >= cell.getCol()) {
-            isMove = false;
-        }
-
-        if (isMove) {//TODO ПЕРЕДЕЛАТЬ
-//            GameField.field[newRow][newCol].sets.get()
-
-        }
-        return isMove;
-    }
     public abstract Properties getProperties();
 
     public abstract int getId();
-    static {
+
+
+
+
+static {
 
         matrixOfPower[15][0] = 0;
         matrixOfPower[15][1] = 0;
@@ -329,6 +315,5 @@ public abstract class Unit {
         matrixOfPower[0][15] = 0;
 
     }
-
 
 }

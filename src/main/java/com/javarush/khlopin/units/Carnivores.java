@@ -9,13 +9,13 @@ import java.util.concurrent.ThreadLocalRandom;
 public abstract class Carnivores extends Animal {
 
 
-    public void eat(List<Unit> herbivoresList, Unit unitSUPER) {
+    public void eat(List<Unit> herbivoresList, Unit superUnit) {
         int randomInt;
         Iterator<Unit> iterator = herbivoresList.iterator();
         while (iterator.hasNext()) {
             Unit unit = iterator.next();
             randomInt = ThreadLocalRandom.current().nextInt(100);
-            int currentProbability = matrixOfPower[unitSUPER.getId()][unit.getId()];
+            int currentProbability = matrixOfPower[superUnit.getId()][unit.getId()];
             if (randomInt < currentProbability) {
                 iterator.remove();
             }

@@ -10,10 +10,10 @@ public class Properties {
 
     public int id;
 
-    public Properties(double weight, int maxCount, int speed, double foodForSaturation, String icon, int id) {
+    public Properties(double weight, int maxCount, int maxSpeed, double foodForSaturation, String icon, int id) {
         this.maxWeight = weight;
         this.maxCount = maxCount;
-        this.maxSpeed = speed;
+        this.maxSpeed = maxSpeed;
         this.foodForSaturation = foodForSaturation;
         this.icon = icon;
         this.id = id;

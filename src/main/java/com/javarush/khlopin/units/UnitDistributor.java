@@ -30,14 +30,14 @@ public class UnitDistributor {
     }
 
     public List<Unit> getPlants() {
-        List<Unit> herbivores = new ArrayList<>();
+        List<Unit> plants = new ArrayList<>();
 
         for (Unit unit : units) {
             if (unit instanceof  Plant) {
-                herbivores.add(unit);
+                plants.add(unit);
             }
         }
-        return herbivores;
+        return plants;
     }
 
     public List<Unit> getCarnivores() {

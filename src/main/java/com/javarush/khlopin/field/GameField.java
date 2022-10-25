@@ -1,6 +1,5 @@
 package com.javarush.khlopin.field;
 
-import com.javarush.khlopin.exception.IslandApplicationException;
 import com.javarush.khlopin.settings.Preferences;
 import com.javarush.khlopin.settings.Properties;
 import com.javarush.khlopin.units.*;
@@ -37,7 +36,7 @@ public class GameField {
     }
 
     // Сделать шаг (пробижаться по всем ячейкам)
-    public void makeStep() {
+    public void makeStep() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException, InstantiationException {
         for (int i = 0; i < field.length; i++) {
             for (int j = 0; j < field[i].length; j++) {
                 field[i][j].makeStep();
@@ -48,8 +47,6 @@ public class GameField {
     // Вывести статистику
     public void printState() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Map<String, Integer> countMap = new HashMap<>();
-
-
         for (Cell[] cells : field) {
             for (Cell cell : cells) {
                 Map<String, Integer> currentMap = new HashMap<>();
@@ -67,11 +64,11 @@ public class GameField {
         System.out.println(countMap);
     }
 
-        public int getCols () {
+        public static int getCols () {
             return field[0].length;
         }
 
-        public int getRows () {
+        public static int getRows () {
             return field.length;
         }
 

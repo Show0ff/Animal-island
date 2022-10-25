@@ -12,16 +12,18 @@ import java.util.Arrays;
 public class Runner {
     private static GameField gameField;
 
-    public static void main(String[] args) throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+    public static void main(String[] args) throws InvocationTargetException, NoSuchMethodException, IllegalAccessException, InstantiationException {
         //TODO РЕАЛИЗОВАТЬ МНОГОПОТОЧКУ
         //TODO ОТРЕФАКТОРИТЬ КОД
 
         gameField = new GameField();
+        View view = new View();
+
 
         gameField.initialize();
-
-
         gameField.printState();
+
+
 
 
 
