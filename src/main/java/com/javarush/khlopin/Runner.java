@@ -22,6 +22,8 @@ public class Runner {
 
         gameField.initialize();
         gameField.printState();
+        gameField.makeStep();
+        gameField.printState();
 
 
 

@@ -1,15 +1,19 @@
 package com.javarush.khlopin.field;
 
+import com.javarush.khlopin.settings.Preferences;
 import com.javarush.khlopin.units.*;
+import com.javarush.khlopin.units.plant.Plant;
 
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
 
 public class Cell {
 
     private final int row;
      private final int col;
 
-    public Map<String, List<Unit>> sets = new HashMap<String, List<Unit>>();
+    public Map<String, List<Unit>> sets = new HashMap<>();
     private final UnitDistributor unitDistributor = new UnitDistributor();
 
 
@@ -21,9 +25,9 @@ public class Cell {
     public void makeStep() {
         eat();
 
-//        move();
+        move();
 
-//        multiply();
+        multiply();
     }
 
     private void eat() {
@@ -48,29 +52,51 @@ public class Cell {
     private void move() {
         for (Map.Entry<String, List<Unit>> pair : sets.entrySet()) {
             List<Unit> value = pair.getValue();
-            Iterator<Unit> iterator = value.iterator();
-            while (iterator.hasNext()) {
-                Unit unit = iterator.next();
-                boolean isMove = unit.move(this);
-                if (isMove) {
-                    iterator.remove();
+            for (Unit unit : value) {
+                if (unit instanceof Plant) {
+                    continue;
+                }
+                boolean isExit = false;
+                for (Cell[] cells : GameField.field) {
+                    if (isExit) {
+                        break;
+                    }
+                    for (Cell cell : cells) {
+
+                        // В этих переменных получаем координаты коллекции sets поля field
+                        int newRow = cell.getCol() + ThreadLocalRandom.current().nextInt(0, unit.getProperties().maxSpeed);
+                        int newCol = cell.getRow() + ThreadLocalRandom.current().nextInt(0, unit.getProperties().maxSpeed);
+
+                        boolean isMove = true;
+
+                        if (newRow >= Preferences.Y || newCol >= Preferences.X || newCol < 0 || newRow < 0) {
+                            isMove = false;
+                        }
+                        if (newRow >= getRow() && newCol >= getCol()) {
+                            isMove = false;
+                        }
+                        if (isMove) {
+                            Map<String, List<Unit>> setsOld = GameField.field[cell.getRow()][cell.getCol()].sets;
+                            Map<String, List<Unit>> setsNew = GameField.field[newRow][newCol].sets;
+
+                            setsNew.forEach(setsOld::putIfAbsent);
+
+                        }
+                    }
                 }
             }
         }
-
     }
 
-    private void multiply() { //TODO Убрать геттор и сделать класс который порождает животных
-        Iterator<Map.Entry<String, List<Unit>>> iterator = sets.entrySet().iterator();
-        while (iterator.hasNext()) {
-            Map.Entry<String, List<Unit>> pair = iterator.next();
+    private void multiply() {
+        for (Map.Entry<String, List<Unit>> pair : sets.entrySet()) {
             String name = pair.getKey();
             List<Unit> units = pair.getValue();
             if (units != null) {
-                int numberOfChildren = units.size()/2;
+                int numberOfChildren = units.size() / 2;
                 for (int i = 0; i < numberOfChildren; i++) {
-//                    Unit unit = UnitFactory.bornUnitByName(name);
-//                    units.add(unit);
+                    Unit unit = UnitFactory.bornUnitByName(name);
+                    units.add(unit);
                 }
             }
         }
