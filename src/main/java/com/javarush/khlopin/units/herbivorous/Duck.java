@@ -33,10 +33,10 @@ public class Duck extends Herbivorous {
                 randomInt = ThreadLocalRandom.current().nextInt(100);
                 int currentProbability = Preferences.matrixOfPower[superUnit.getId()][unit.getId()];
                 if (randomInt < currentProbability) {
-                    superUnit.getProperties().foodForSaturation += 10;
+                    superUnit.getProperties().foodForSaturation += Preferences.ADD_SATIETY_FOR_FOOD;
                     iterator.remove();
                 } else {
-                    superUnit.getProperties().foodForSaturation -= 1;
+                    superUnit.getProperties().foodForSaturation -= Preferences.REDUCE_SATIETY_FOR_FOOD;
                 }
             }
         }
