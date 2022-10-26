@@ -87,7 +87,6 @@ public class Cell {
                 for (Cell[] cells : GameField.field) {
                     for (Cell cell : cells) {
 
-                        // В этих переменных получаем координаты коллекции sets поля field
                         int newRow = cell.getCol() + ThreadLocalRandom.current().nextInt(0, unit.getProperties().maxSpeed);
                         int newCol = cell.getRow() + ThreadLocalRandom.current().nextInt(0, unit.getProperties().maxSpeed);
 

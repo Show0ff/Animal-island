@@ -1,10 +1,20 @@
 package com.javarush.khlopin.view;
 
 
+
+import com.javarush.khlopin.field.MapOfIsland;
+import com.javarush.khlopin.field.Statistic;
+
+import java.util.Scanner;
+
 public class View {
     private final MapOfIsland mapOfIsland = new MapOfIsland();
 
     private final Statistic statistic = new Statistic();
+
+    private final Scanner scanner = new Scanner(System.in);
+
+
     public void printMap() {
         System.out.println(mapOfIsland.drawMap());
     }
@@ -13,8 +23,9 @@ public class View {
         System.out.println(statistic.printState());
     }
 
-
-
-
+    public int printStart() {
+        System.out.print("Введите количество тактов жизни симуляции: ");
+        return scanner.nextInt();
+    }
 
 }

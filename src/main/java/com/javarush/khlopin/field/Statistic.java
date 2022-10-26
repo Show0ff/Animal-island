@@ -1,8 +1,7 @@
-package com.javarush.khlopin.view;
+package com.javarush.khlopin.field;
 
 import com.javarush.khlopin.exception.IslandApplicationException;
-import com.javarush.khlopin.field.Cell;
-import com.javarush.khlopin.field.GameField;
+
 import com.javarush.khlopin.settings.Properties;
 import com.javarush.khlopin.units.Unit;
 

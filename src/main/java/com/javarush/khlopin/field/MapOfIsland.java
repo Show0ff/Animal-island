@@ -1,7 +1,5 @@
-package com.javarush.khlopin.view;
+package com.javarush.khlopin.field;
 
-import com.javarush.khlopin.field.Cell;
-import com.javarush.khlopin.field.GameField;
 import com.javarush.khlopin.units.Unit;
 
 import java.util.List;
@@ -11,6 +9,8 @@ public class MapOfIsland {
 
     private final int position = 2;
     private final String border = "═".repeat(position);
+
+
 
     public String drawMap() {
         Cell[][] cells = GameField.field;
@@ -50,5 +50,6 @@ public class MapOfIsland {
         }
         return (joiner.toString());
     }
+
 
 }
