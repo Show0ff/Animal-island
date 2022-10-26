@@ -14,10 +14,10 @@ public abstract class Herbivorous extends Animal {
             iterator.next();
             int randomInt = ThreadLocalRandom.current().nextInt(Preferences.CHANCE_TO_EAT_PLANT); //Вероятность поедания травы
             if (randomInt == 1) {
-                superUnit.getProperties().satiety += 10;
+                superUnit.getProperties().satiety += Preferences.ADD_SATIETY_FOR_FOOD;
                 iterator.remove();
             } else {
-                superUnit.getProperties().satiety += 1;
+                superUnit.getProperties().satiety += Preferences.REDUCE_SATIETY_FOR_FOOD;
             }
         }
     }

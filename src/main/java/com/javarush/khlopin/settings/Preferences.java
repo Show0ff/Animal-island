@@ -8,6 +8,9 @@ public class Preferences {
 
     public static final int CHANCE_TO_EAT_PLANT = 20;
 
+    public static final int ADD_SATIETY_FOR_FOOD = 20;
+
+    public static final int REDUCE_SATIETY_FOR_FOOD = 2;
 
     public static int[][] matrixOfPower = new int[16][16];
 
