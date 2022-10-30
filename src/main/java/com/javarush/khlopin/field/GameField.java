@@ -30,8 +30,6 @@ public class GameField {
         }
     }
 
-
-
         public static int getCols () {
             return field[0].length;
         }

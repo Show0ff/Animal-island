@@ -81,15 +81,13 @@ public class Cell implements Callable<Void> {
             List<Unit> value = pair.getValue();
             for (Unit unit : value) {
                 if (unit instanceof Plant || unit instanceof Caterpillar) {
-                    continue;
+                    break;
                 }
                 for (Cell[] cells : GameField.field) {
                     for (Cell cell : cells) {
 
                         int newRow = cell.getCol() + ThreadLocalRandom.current().nextInt(0, unit.getProperties().maxSpeed);
                         int newCol = cell.getRow() + ThreadLocalRandom.current().nextInt(0, unit.getProperties().maxSpeed);
-
-
                         if (newRow >= Preferences.Y || newCol >= Preferences.X || newCol < 0 || newRow < 0) {
                             isMove = false;
                         }

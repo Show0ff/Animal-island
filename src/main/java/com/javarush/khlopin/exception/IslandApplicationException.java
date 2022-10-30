@@ -8,4 +8,7 @@ public class IslandApplicationException extends RuntimeException {
     public IslandApplicationException() {
     }
 
+    public IslandApplicationException(String animal_not_found) {
+
+    }
 }

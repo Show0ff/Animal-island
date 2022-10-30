@@ -39,7 +39,7 @@ public class Runner {
             }
             threadPoolExecutor.shutdown();
 
-            view.printMap();
+//            view.printMap();
             view.printStatistic();
 
         }
