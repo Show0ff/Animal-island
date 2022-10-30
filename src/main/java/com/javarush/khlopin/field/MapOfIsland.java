@@ -26,7 +26,7 @@ public class MapOfIsland {
                 String residentString = get(cells[i][i1]);
                 stringBuilder.append(String.format("║%-" + position + "s", residentString));
             }
-            stringBuilder.append("                              ║").append("\n");
+            stringBuilder.append("║").append("\n");
         }
         stringBuilder.append(line(cols,'╚', '╩', '╝'));
         return stringBuilder.toString();

@@ -7,4 +7,5 @@ public class IslandApplicationException extends RuntimeException {
 
     public IslandApplicationException() {
     }
+
 }

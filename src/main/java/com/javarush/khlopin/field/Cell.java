@@ -6,11 +6,13 @@ import com.javarush.khlopin.units.herbivorous.Caterpillar;
 import com.javarush.khlopin.units.herbivorous.Duck;
 import com.javarush.khlopin.units.plant.Plant;
 
+
 import java.util.*;
+import java.util.concurrent.Callable;
 import java.util.concurrent.ThreadLocalRandom;
 
 
-public class Cell {
+public class Cell implements Callable<Void> {
 
     private final int row;
     private final int col;
@@ -26,11 +28,8 @@ public class Cell {
 
     public void makeStep() {
         eat();
-
         checkForSatiety();
-
         move();
-
         multiply();
     }
 
@@ -129,5 +128,11 @@ public class Cell {
 
     public int getCol() {
         return col;
+    }
+
+    @Override
+    public Void call() {
+        makeStep();
+        return null;
     }
 }

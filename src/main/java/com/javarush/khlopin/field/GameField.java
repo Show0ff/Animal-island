@@ -13,7 +13,6 @@ public class GameField {
 
 
 
-    // Заселить поле животными и растениями
     public void initialize()  {
         for (int i = 0; i < field.length; i++) {
             for (int j = 0; j < field[0].length; j++) {
@@ -31,16 +30,6 @@ public class GameField {
         }
     }
 
-    // Сделать шаг (пробижаться по всем ячейкам)
-    public void makeStep()  {
-        for (Cell[] cells : field) {
-            for (Cell cell : cells) {
-                cell.makeStep();
-            }
-        }
-    }
-
-    // Вывести статистику
 
 
         public static int getCols () {
